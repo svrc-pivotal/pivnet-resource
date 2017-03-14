@@ -58,6 +58,7 @@ var _ = Describe("In", func() {
 
 		release           pivnet.Release
 		downloadFilepaths []string
+		fileContentsSHA256 string
 		fileContentsMD5s  []string
 
 		getReleaseErr           error
@@ -66,6 +67,7 @@ var _ = Describe("In", func() {
 		productFileErr          error
 		downloadErr             error
 		filterErr               error
+		sha256sumErr		error
 		md5sumErr               error
 		releaseDependenciesErr  error
 		dependencySpecifiersErr error
@@ -87,6 +89,7 @@ var _ = Describe("In", func() {
 		filterErr = nil
 		downloadErr = nil
 		md5sumErr = nil
+		sha256sumErr = nil
 		releaseDependenciesErr = nil
 		dependencySpecifiersErr = nil
 		releaseUpgradePathsErr = nil
@@ -95,6 +98,8 @@ var _ = Describe("In", func() {
 		version = "C"
 		fingerprint = "fingerprint-0"
 		actualFingerprint = fingerprint
+
+		fileContentsSHA256 = ""
 
 		fileContentsMD5s = []string{
 			"some-md5 1234",
@@ -157,6 +162,7 @@ var _ = Describe("In", func() {
 			FileType:           pivnet.FileTypeSoftware,
 			FileVersion:        "some-file-version 1234",
 			MD5:                fileContentsMD5s[0],
+			SHA256:             fileContentsSHA256,
 			DocsURL:            "some-url",
 			SystemRequirements: []string{"req1", "req2"},
 			Links: &pivnet.Links{
@@ -341,6 +347,10 @@ var _ = Describe("In", func() {
 		fakeFileSummer.SumFileStub = func(path string) (string, error) {
 			if md5sumErr != nil {
 				return "", md5sumErr
+			}
+
+			if sha256sumErr != nil {
+				return "", sha256sumErr
 			}
 
 			for i, f := range downloadFilepaths {
@@ -626,9 +636,44 @@ var _ = Describe("In", func() {
 			})
 		})
 
+		Context("when calculating sha256 sum of file returns an error", func() {
+			BeforeEach(func() {
+				sha256sumErr = fmt.Errorf("some sha256 err error")
+			})
+
+			It("returns the error", func() {
+				_, err := inCommand.Run(inRequest)
+				Expect(err).To(HaveOccurred())
+
+				Expect(err).To(Equal(sha256sumErr))
+			})
+		})
+
 		Context("when the MD5 does not match", func() {
 			BeforeEach(func() {
 				fileContentsMD5s[0] = "incorrect md5"
+			})
+
+			It("returns an error", func() {
+				_, err := inCommand.Run(inRequest)
+				Expect(err).To(HaveOccurred())
+			})
+		})
+
+		Context("when the SHA256 is not supplied", func() {
+			BeforeEach(func() {
+				fileContentsSHA256 = ""
+			})
+
+			It("does not return an error", func() {
+				_, err := inCommand.Run(inRequest)
+				Expect(err).NotTo(HaveOccurred())
+			})
+		})
+
+		Context("when the SHA256 is supplied and does not match", func() {
+			BeforeEach(func() {
+				fileContentsSHA256 = "incorrect sha256"
 			})
 
 			It("returns an error", func() {
