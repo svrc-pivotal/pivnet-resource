@@ -13,7 +13,7 @@ import (
 
 	"github.com/pivotal-cf/pivnet-resource/filter"
 	"github.com/pivotal-cf/pivnet-resource/gp"
-	"github.com/pivotal-cf/pivnet-resource/in"
+	"github.com/svrc-pivotal/pivnet-resource/in"
 	"github.com/pivotal-cf/pivnet-resource/in/filesystem"
 	"github.com/pivotal-cf/pivnet-resource/md5sum"
 	"github.com/pivotal-cf/pivnet-resource/sha256sum"

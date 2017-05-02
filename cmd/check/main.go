@@ -8,7 +8,7 @@ import (
 
 	"github.com/pivotal-cf/go-pivnet"
 	"github.com/pivotal-cf/go-pivnet/logshim"
-	"github.com/pivotal-cf/pivnet-resource/check"
+	"github.com/svrc-pivotal/pivnet-resource/check"
         "github.com/svrc-pivotal/pivnet-resource/concourse"
 
 	"github.com/pivotal-cf/pivnet-resource/filter"
