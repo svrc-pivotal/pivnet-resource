@@ -21,7 +21,7 @@ import (
 	"github.com/pivotal-cf/pivnet-resource/metadata"
 	"github.com/pivotal-cf/pivnet-resource/out"
 	"github.com/pivotal-cf/pivnet-resource/out/release"
-	"github.com/pivotal-cf/pivnet-resource/s3"
+	"github.com/svrc-pivotal/pivnet-resource/s3"
 	"github.com/pivotal-cf/pivnet-resource/semver"
 	"github.com/pivotal-cf/pivnet-resource/sha256sum"
 	"github.com/pivotal-cf/pivnet-resource/ui"
