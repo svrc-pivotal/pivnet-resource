@@ -17,7 +17,7 @@ type Source struct {
 	Endpoint        string `json:"endpoint"`
 	Region          string `json:"region"`
 	ReleaseType     string `json:"release_type"`
-	SkipSSLValidation string `json:"skip_ssl_validation"`
+	SkipSSLValidation bool `json:"skip_ssl_validation"`
 	SortBy          SortBy `json:"sort_by"`
 }
 
