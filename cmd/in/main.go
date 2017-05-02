@@ -8,8 +8,9 @@ import (
 	"github.com/fatih/color"
 	"github.com/pivotal-cf/go-pivnet"
 	"github.com/pivotal-cf/go-pivnet/logshim"
-	"github.com/pivotal-cf/pivnet-resource/concourse"
 	"github.com/pivotal-cf/pivnet-resource/downloader"
+        "github.com/svrc-pivotal/pivnet-resource/concourse"
+
 	"github.com/pivotal-cf/pivnet-resource/filter"
 	"github.com/pivotal-cf/pivnet-resource/gp"
 	"github.com/pivotal-cf/pivnet-resource/in"

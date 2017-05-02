@@ -13,7 +13,7 @@ import (
 	"github.com/pivotal-cf/go-pivnet/logshim"
 	"github.com/pivotal-cf/pivnet-resource/check"
 	"github.com/pivotal-cf/pivnet-resource/check/checkfakes"
-	"github.com/pivotal-cf/pivnet-resource/concourse"
+        "github.com/svrc-pivotal/pivnet-resource/concourse"
 	"github.com/pivotal-cf/pivnet-resource/versions"
 
 	. "github.com/onsi/ginkgo"
