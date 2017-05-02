@@ -16,7 +16,7 @@ import (
 	"github.com/pivotal-cf/pivnet-resource/semver"
 	"github.com/pivotal-cf/pivnet-resource/sorter"
 	"github.com/pivotal-cf/pivnet-resource/useragent"
-	"github.com/pivotal-cf/pivnet-resource/validator"
+        "github.com/svrc-pivotal/pivnet-resource/validator"
 	"github.com/robdimsdale/sanitizer"
 )
 

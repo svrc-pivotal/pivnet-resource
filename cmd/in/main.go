@@ -19,7 +19,7 @@ import (
 	"github.com/pivotal-cf/pivnet-resource/sha256sum"
 	"github.com/pivotal-cf/pivnet-resource/ui"
 	"github.com/pivotal-cf/pivnet-resource/useragent"
-	"github.com/pivotal-cf/pivnet-resource/validator"
+        "github.com/svrc-pivotal/pivnet-resource/validator"
 	"github.com/robdimsdale/sanitizer"
 )
 

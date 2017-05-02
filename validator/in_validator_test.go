@@ -4,8 +4,8 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/pivotal-cf/pivnet-resource/concourse"
-	"github.com/pivotal-cf/pivnet-resource/validator"
+        "github.com/svrc-pivotal/pivnet-resource/concourse"
+        "github.com/svrc-pivotal/pivnet-resource/validator"
 )
 
 var _ = Describe("In Validator", func() {
